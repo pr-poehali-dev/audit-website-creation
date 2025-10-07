@@ -3,11 +3,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const { toast } = useToast();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +20,7 @@ const Index = () => {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     element?.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -45,6 +48,41 @@ const Index = () => {
               <button onClick={() => scrollToSection('contacts')} className="text-muted-foreground hover:text-primary transition-colors">Контакты</button>
               <button onClick={() => scrollToSection('disclosure')} className="text-muted-foreground hover:text-primary transition-colors">Раскрытие информации</button>
             </nav>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild className="md:hidden">
+                <Button variant="ghost" size="icon">
+                  <Icon name="Menu" size={24} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[280px]">
+                <div className="flex flex-col gap-6 mt-8">
+                  <button 
+                    onClick={() => scrollToSection('about')} 
+                    className="text-left text-lg text-foreground hover:text-primary transition-colors"
+                  >
+                    О компании
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('services')} 
+                    className="text-left text-lg text-foreground hover:text-primary transition-colors"
+                  >
+                    Услуги
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('contacts')} 
+                    className="text-left text-lg text-foreground hover:text-primary transition-colors"
+                  >
+                    Контакты
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('disclosure')} 
+                    className="text-left text-lg text-foreground hover:text-primary transition-colors"
+                  >
+                    Раскрытие информации
+                  </button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </header>
