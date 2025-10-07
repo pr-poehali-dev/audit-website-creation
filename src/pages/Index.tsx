@@ -35,7 +35,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+      <header className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md border-b border-border/50 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -43,10 +43,10 @@ const Index = () => {
               <span className="text-xl font-bold text-foreground">АудитПро</span>
             </div>
             <nav className="hidden md:flex gap-8">
-              <button onClick={() => scrollToSection('about')} className="text-muted-foreground hover:text-primary transition-colors">О компании</button>
-              <button onClick={() => scrollToSection('services')} className="text-muted-foreground hover:text-primary transition-colors">Услуги</button>
-              <button onClick={() => scrollToSection('contacts')} className="text-muted-foreground hover:text-primary transition-colors">Контакты</button>
-              <button onClick={() => scrollToSection('disclosure')} className="text-muted-foreground hover:text-primary transition-colors">Раскрытие информации</button>
+              <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">О компании</button>
+              <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Услуги</button>
+              <button onClick={() => scrollToSection('contacts')} className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Контакты</button>
+              <button onClick={() => scrollToSection('disclosure')} className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300 hover:after:w-full">Раскрытие информации</button>
             </nav>
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild className="md:hidden">
@@ -88,62 +88,66 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-primary/5 to-secondary/5">
-        <div className="container mx-auto text-center animate-fade-in">
-          <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-            Профессиональный аудит<br />и консалтинг
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Надёжный партнёр в финансовом контроле и бизнес-консультировании с 2005 года
-          </p>
-          <Button size="lg" onClick={() => scrollToSection('contacts')} className="text-lg px-8">
-            Получить консультацию
-          </Button>
+      <section className="relative pt-40 pb-32 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] via-background to-secondary/[0.02]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(147,197,253,0.04),transparent_50%)]"></div>
+        <div className="container mx-auto text-center relative z-10">
+          <div className="animate-fade-in">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-[1.1]">
+              Профессиональный<br />аудит и консалтинг
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+              Надёжный партнёр в финансовом контроле и бизнес-консультировании с 2005 года
+            </p>
+            <Button size="lg" onClick={() => scrollToSection('contacts')} className="text-lg px-10 py-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              Получить консультацию
+            </Button>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4">
+      <section id="about" className="py-32 px-4 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">О компании</h2>
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 text-foreground">О компании</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed font-light">
                 АудитПро — ведущая аудиторская компания с многолетним опытом работы на российском рынке. 
                 Мы предоставляем полный спектр услуг в области аудита, налогового консультирования и бухгалтерского учёта.
               </p>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-xl text-muted-foreground mb-8 leading-relaxed font-light">
                 Наша команда состоит из высококвалифицированных специалистов с профессиональными сертификатами 
                 и многолетним опытом работы в крупнейших компаниях.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-6">
-              <Card className="animate-fade-in">
-                <CardHeader>
-                  <Icon name="Award" size={32} className="text-primary mb-2" />
-                  <CardTitle>18+ лет</CardTitle>
-                  <CardDescription>на рынке</CardDescription>
+              <Card className="animate-scale-in hover-lift border-0 shadow-sm bg-gradient-to-br from-white to-primary/[0.02]">
+                <CardHeader className="text-center pb-6">
+                  <Icon name="Award" size={40} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="text-4xl mb-2">18+</CardTitle>
+                  <CardDescription className="text-base">лет на рынке</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="animate-fade-in">
-                <CardHeader>
-                  <Icon name="Users" size={32} className="text-primary mb-2" />
-                  <CardTitle>500+</CardTitle>
-                  <CardDescription>клиентов</CardDescription>
+              <Card className="animate-scale-in hover-lift border-0 shadow-sm bg-gradient-to-br from-white to-primary/[0.02]">
+                <CardHeader className="text-center pb-6">
+                  <Icon name="Users" size={40} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="text-4xl mb-2">500+</CardTitle>
+                  <CardDescription className="text-base">клиентов</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="animate-fade-in">
-                <CardHeader>
-                  <Icon name="FileCheck" size={32} className="text-primary mb-2" />
-                  <CardTitle>1000+</CardTitle>
-                  <CardDescription>проектов</CardDescription>
+              <Card className="animate-scale-in hover-lift border-0 shadow-sm bg-gradient-to-br from-white to-primary/[0.02]">
+                <CardHeader className="text-center pb-6">
+                  <Icon name="FileCheck" size={40} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="text-4xl mb-2">1000+</CardTitle>
+                  <CardDescription className="text-base">проектов</CardDescription>
                 </CardHeader>
               </Card>
-              <Card className="animate-fade-in">
-                <CardHeader>
-                  <Icon name="Shield" size={32} className="text-primary mb-2" />
-                  <CardTitle>100%</CardTitle>
-                  <CardDescription>надёжность</CardDescription>
+              <Card className="animate-scale-in hover-lift border-0 shadow-sm bg-gradient-to-br from-white to-primary/[0.02]">
+                <CardHeader className="text-center pb-6">
+                  <Icon name="Shield" size={40} className="text-primary mb-4 mx-auto" />
+                  <CardTitle className="text-4xl mb-2">100%</CardTitle>
+                  <CardDescription className="text-base">надёжность</CardDescription>
                 </CardHeader>
               </Card>
             </div>
@@ -152,142 +156,148 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-muted/30">
+      <section id="services" className="py-32 px-4 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">Наши услуги</h2>
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 text-foreground">Наши услуги</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="animate-fade-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Icon name="FileSearch" size={40} className="text-primary mb-4" />
-                <CardTitle className="text-2xl">Аудиторские услуги</CardTitle>
+            <Card className="animate-fade-in hover-lift border-0 shadow-md bg-white overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardHeader className="pb-4">
+                <Icon name="FileSearch" size={48} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <CardTitle className="text-2xl mb-3">Аудиторские услуги</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Обязательный аудит</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Инициативный аудит</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Специальный аудит</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="animate-fade-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Icon name="Calculator" size={40} className="text-primary mb-4" />
-                <CardTitle className="text-2xl">Бухгалтерское сопровождение</CardTitle>
+            <Card className="animate-fade-in hover-lift border-0 shadow-md bg-white overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardHeader className="pb-4">
+                <Icon name="Calculator" size={48} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <CardTitle className="text-2xl mb-3">Бухгалтерское сопровождение</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Ведение учёта</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Восстановление учёта</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Консультации</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="animate-fade-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Icon name="Scale" size={40} className="text-primary mb-4" />
-                <CardTitle className="text-2xl">Налоговый консалтинг</CardTitle>
+            <Card className="animate-fade-in hover-lift border-0 shadow-md bg-white overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardHeader className="pb-4">
+                <Icon name="Scale" size={48} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <CardTitle className="text-2xl mb-3">Налоговый консалтинг</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Налоговое планирование</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Налоговые проверки</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Оптимизация налогов</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="animate-fade-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Icon name="TrendingUp" size={40} className="text-primary mb-4" />
-                <CardTitle className="text-2xl">Оценочные услуги</CardTitle>
+            <Card className="animate-fade-in hover-lift border-0 shadow-md bg-white overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardHeader className="pb-4">
+                <Icon name="TrendingUp" size={48} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <CardTitle className="text-2xl mb-3">Оценочные услуги</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Оценка бизнеса</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Оценка недвижимости</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Оценка активов</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="animate-fade-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Icon name="Briefcase" size={40} className="text-primary mb-4" />
-                <CardTitle className="text-2xl">Юридические услуги</CardTitle>
+            <Card className="animate-fade-in hover-lift border-0 shadow-md bg-white overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardHeader className="pb-4">
+                <Icon name="Briefcase" size={48} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <CardTitle className="text-2xl mb-3">Юридические услуги</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Правовой аудит</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Договорная работа</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Судебная защита</span>
                   </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="animate-fade-in hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Icon name="Building" size={40} className="text-primary mb-4" />
-                <CardTitle className="text-2xl">Корпоративные услуги</CardTitle>
+            <Card className="animate-fade-in hover-lift border-0 shadow-md bg-white overflow-hidden group">
+              <div className="h-2 bg-gradient-to-r from-primary to-secondary"></div>
+              <CardHeader className="pb-4">
+                <Icon name="Building" size={48} className="text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <CardTitle className="text-2xl mb-3">Корпоративные услуги</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3 text-muted-foreground">
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                <ul className="space-y-4 text-muted-foreground">
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Регистрация компаний</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Реорганизация</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <Icon name="Check" size={20} className="text-primary mt-0.5" />
+                  <li className="flex items-start gap-3">
+                    <Icon name="Check" size={20} className="text-primary mt-0.5 flex-shrink-0" />
                     <span>Ликвидация</span>
                   </li>
                 </ul>
@@ -298,9 +308,9 @@ const Index = () => {
       </section>
 
       {/* Contacts Section */}
-      <section id="contacts" className="py-20 px-4">
+      <section id="contacts" className="py-32 px-4 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">Контакты</h2>
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 text-foreground">Контакты</h2>
           <div className="grid md:grid-cols-2 gap-12">
             <div className="animate-fade-in">
               <h3 className="text-2xl font-semibold mb-6 text-foreground">Свяжитесь с нами</h3>
@@ -335,13 +345,13 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <Card className="animate-fade-in">
-              <CardHeader>
-                <CardTitle>Оставьте заявку</CardTitle>
-                <CardDescription>Мы свяжемся с вами в ближайшее время</CardDescription>
+            <Card className="animate-fade-in border-0 shadow-lg">
+              <CardHeader className="pb-6">
+                <CardTitle className="text-3xl mb-2">Оставьте заявку</CardTitle>
+                <CardDescription className="text-base">Мы свяжемся с вами в ближайшее время</CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <Input
                       placeholder="Ваше имя"
@@ -376,7 +386,7 @@ const Index = () => {
                       rows={4}
                     />
                   </div>
-                  <Button type="submit" className="w-full">Отправить заявку</Button>
+                  <Button type="submit" className="w-full py-6 text-lg rounded-xl">Отправить заявку</Button>
                 </form>
               </CardContent>
             </Card>
@@ -385,11 +395,11 @@ const Index = () => {
       </section>
 
       {/* Disclosure Section */}
-      <section id="disclosure" className="py-20 px-4 bg-muted/30">
+      <section id="disclosure" className="py-32 px-4 bg-gradient-to-b from-muted/20 to-background">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12 text-foreground">Раскрытие информации</h2>
-          <div className="max-w-4xl mx-auto space-y-4 animate-fade-in">
-            <Card>
+          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 text-foreground">Раскрытие информации</h2>
+          <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
+            <Card className="border-0 shadow-md hover-lift bg-white">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div>
@@ -462,30 +472,31 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-white py-12 px-4">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+      <footer className="bg-gradient-to-br from-foreground to-foreground/95 text-white py-16 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+        <div className="container mx-auto relative z-10">
+          <div className="grid md:grid-cols-3 gap-12">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Icon name="Building2" size={28} />
-                <span className="text-xl font-bold">АудитПро</span>
+              <div className="flex items-center gap-2 mb-6">
+                <Icon name="Building2" size={32} />
+                <span className="text-2xl font-bold">АудитПро</span>
               </div>
-              <p className="text-gray-300">Профессиональный аудит и консалтинг с 2005 года</p>
+              <p className="text-gray-300 text-lg font-light leading-relaxed">Профессиональный аудит и консалтинг с 2005 года</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Контакты</h4>
-              <p className="text-gray-300">г. Москва, ул. Тверская, д. 15</p>
-              <p className="text-gray-300">+7 (495) 123-45-67</p>
+              <h4 className="font-semibold mb-6 text-lg">Контакты</h4>
+              <p className="text-gray-300 mb-2">г. Москва, ул. Тверская, д. 15</p>
+              <p className="text-gray-300 mb-2">+7 (495) 123-45-67</p>
               <p className="text-gray-300">info@auditpro.ru</p>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Режим работы</h4>
-              <p className="text-gray-300">Понедельник - Пятница</p>
+              <h4 className="font-semibold mb-6 text-lg">Режим работы</h4>
+              <p className="text-gray-300 mb-2">Понедельник - Пятница</p>
               <p className="text-gray-300">9:00 - 18:00</p>
             </div>
           </div>
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-            <p>© 2025 АудитПро. Все права защищены.</p>
+          <div className="border-t border-white/10 mt-12 pt-8 text-center">
+            <p className="text-gray-400 font-light">© 2025 АудитПро. Все права защищены.</p>
           </div>
         </div>
       </footer>
